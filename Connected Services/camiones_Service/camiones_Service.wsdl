@@ -1,0 +1,214 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:tns="http://tempuri.org/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="insertar_Camion">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="camion" type="tns:Camiones_VO" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="Camiones_VO">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="ID_Camion" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Matricula" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Tipo_Camion" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Marca" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Modelo" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Capacidad" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="Kilometraje" type="s:double" />
+          <s:element minOccurs="0" maxOccurs="1" name="UrlFoto" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Disponibilidad" type="s:boolean" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="insertar_CamionResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="insertar_CamionResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Get_Camiones">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="parametros" type="tns:ArrayOfAnyType" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfAnyType">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="anyType" nillable="true" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfCamiones_VO">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Camiones_VO" nillable="true" type="tns:Camiones_VO" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="Get_CamionesResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Get_CamionesResult" type="tns:ArrayOfCamiones_VO" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="actualizar_Camion">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="camion" type="tns:Camiones_VO" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="actualizar_CamionResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="actualizar_CamionResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="eliminar_Camion">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="id" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="eliminar_CamionResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="eliminar_CamionResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="insertar_CamionSoapIn">
+    <wsdl:part name="parameters" element="tns:insertar_Camion" />
+  </wsdl:message>
+  <wsdl:message name="insertar_CamionSoapOut">
+    <wsdl:part name="parameters" element="tns:insertar_CamionResponse" />
+  </wsdl:message>
+  <wsdl:message name="Get_CamionesSoapIn">
+    <wsdl:part name="parameters" element="tns:Get_Camiones" />
+  </wsdl:message>
+  <wsdl:message name="Get_CamionesSoapOut">
+    <wsdl:part name="parameters" element="tns:Get_CamionesResponse" />
+  </wsdl:message>
+  <wsdl:message name="actualizar_CamionSoapIn">
+    <wsdl:part name="parameters" element="tns:actualizar_Camion" />
+  </wsdl:message>
+  <wsdl:message name="actualizar_CamionSoapOut">
+    <wsdl:part name="parameters" element="tns:actualizar_CamionResponse" />
+  </wsdl:message>
+  <wsdl:message name="eliminar_CamionSoapIn">
+    <wsdl:part name="parameters" element="tns:eliminar_Camion" />
+  </wsdl:message>
+  <wsdl:message name="eliminar_CamionSoapOut">
+    <wsdl:part name="parameters" element="tns:eliminar_CamionResponse" />
+  </wsdl:message>
+  <wsdl:portType name="camiones_ServiceSoap">
+    <wsdl:operation name="insertar_Camion">
+      <wsdl:input message="tns:insertar_CamionSoapIn" />
+      <wsdl:output message="tns:insertar_CamionSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Get_Camiones">
+      <wsdl:input message="tns:Get_CamionesSoapIn" />
+      <wsdl:output message="tns:Get_CamionesSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="actualizar_Camion">
+      <wsdl:input message="tns:actualizar_CamionSoapIn" />
+      <wsdl:output message="tns:actualizar_CamionSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="eliminar_Camion">
+      <wsdl:input message="tns:eliminar_CamionSoapIn" />
+      <wsdl:output message="tns:eliminar_CamionSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="camiones_ServiceSoap" type="tns:camiones_ServiceSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="insertar_Camion">
+      <soap:operation soapAction="http://tempuri.org/insertar_Camion" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Get_Camiones">
+      <soap:operation soapAction="http://tempuri.org/Get_Camiones" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="actualizar_Camion">
+      <soap:operation soapAction="http://tempuri.org/actualizar_Camion" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="eliminar_Camion">
+      <soap:operation soapAction="http://tempuri.org/eliminar_Camion" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="camiones_ServiceSoap12" type="tns:camiones_ServiceSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="insertar_Camion">
+      <soap12:operation soapAction="http://tempuri.org/insertar_Camion" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Get_Camiones">
+      <soap12:operation soapAction="http://tempuri.org/Get_Camiones" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="actualizar_Camion">
+      <soap12:operation soapAction="http://tempuri.org/actualizar_Camion" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="eliminar_Camion">
+      <soap12:operation soapAction="http://tempuri.org/eliminar_Camion" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="camiones_Service">
+    <wsdl:port name="camiones_ServiceSoap" binding="tns:camiones_ServiceSoap">
+      <soap:address location="http://localhost:49648/WS/Camiones/camiones_Service.asmx" />
+    </wsdl:port>
+    <wsdl:port name="camiones_ServiceSoap12" binding="tns:camiones_ServiceSoap12">
+      <soap12:address location="http://localhost:49648/WS/Camiones/camiones_Service.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
